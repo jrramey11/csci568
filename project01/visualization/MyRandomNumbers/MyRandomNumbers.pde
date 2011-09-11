@@ -9,12 +9,16 @@ SimpleSpreadsheetManager sm;
 String sUrl = "t6mq_WLV5c5uj6mUNSryBIA";
 String googleUser = GUSER;
 String googlePass = GPASS;
-  
+  //This is the font object
+  PFont label;
 void setup() {
   //This code happens once, right when our sketch is launched
  size(800,800);
  background(0);
  smooth();
+ 
+ //Create the font object to make text with
+ label = createFont("Helvetica", 24);
  
  //Ask for the list of numbers
  int[] numbers = getNumbers();
@@ -31,7 +35,7 @@ for (int i = 1; i < 7; i++) {
 }
 */
 } 
-/*
+
 void barGraph( int[] nums, float y ) {
   //Make a list of number counts
   int [] counts = new int[100];
@@ -50,7 +54,7 @@ void barGraph( int[] nums, float y ) {
    rect(i * 8, y, 8, -counts[i] * 10);
  }
 }
-*/
+
 
 void colorGrid(int[] nums, float x, float y, float s){
    //Make a list of number counts
@@ -70,7 +74,10 @@ void colorGrid(int[] nums, float x, float y, float s){
   for (int i = 0; i < counts.length; i++){
     colorMode(HSB);
     fill(counts[i] * 30, 255, 255, counts[i] * 30);
-    rect((i % 10) * s, floor(i/10) * s, s, s);
+    textAlign(CENTER);
+   textFont(label);
+   textSize(s/2);
+   text(i, (i % 10) * s, floor(i/10) * s);
   }
   popMatrix();
 }
