@@ -1,0 +1,16 @@
+ReadMe 
+
+Jerry Ramey 
+Artificial Network 
+November 7, 2011
+
+Files:
+
+ann.rb-> Contains the class structures that will be used in order to maintain the values and connections at each level. You will notice that some variable are not used such as error and bias. Thes values are not manditory at the moment put will be implemented for the portfolio submission in order to have a more general case of an ANN, rather than the 3 node simple input ANN. 
+
+ann_functions-> Contains the functions used to calculate the activaction function, sigmoidal function, and the backpropagation weight adjustments.
+
+nn-> Will actually do the building of the artificial neural network and then will continue to do the first backpropagation to show that the functions in ann_functions are actually working. However, for the portfolio submission the build_network function will only build the network and not implement back propagation. It will also allow for a feed-forward method to train more data. 
+
+main_ann_iteraction-> Contains the input and desired output values and as well as actually calling the build_network function. This file will also change for the portfolio submission due to the fact it will allow the user to specify how many training iterations would be desired and importing files for training data. 
+
