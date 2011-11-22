@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<favoritenodes>
+<personals/>
+<frequents>
+<favorite frequency="4" nodeid="org.knime.base.node.viz.plotter.scatter.ScatterPlotterNodeFactory"/>
+<favorite frequency="3" nodeid="org.knime.base.node.io.csvreader.CSVReaderNodeFactory"/>
+<favorite frequency="3" nodeid="org.knime.base.node.viz.plotter.scattermatrix.ScatterMatrixNodeFactory"/>
+<favorite frequency="3" nodeid="org.knime.base.node.mine.cluster.kmeans.ClusterNodeFactory"/>
+<favorite frequency="2" nodeid="org.knime.base.node.viz.plotter.line.LinePlotterNodeFactory"/>
+<favorite frequency="2" nodeid="org.knime.base.node.viz.property.color.ColorManager2NodeFactory"/>
+<favorite frequency="2" nodeid="org.knime.base.node.viz.property.shape.ShapeManagerNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.mine.cluster.fuzzycmeans.FuzzyClusterNodeFactory"/>
+</frequents>
+<lastused>
+<favorite nodeid="org.knime.base.node.mine.cluster.fuzzycmeans.FuzzyClusterNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.cluster.kmeans.ClusterNodeFactory"/>
+<favorite nodeid="org.knime.base.node.viz.plotter.scattermatrix.ScatterMatrixNodeFactory"/>
+<favorite nodeid="org.knime.base.node.viz.property.shape.ShapeManagerNodeFactory"/>
+<favorite nodeid="org.knime.base.node.viz.property.color.ColorManager2NodeFactory"/>
+<favorite nodeid="org.knime.base.node.io.csvreader.CSVReaderNodeFactory"/>
+<favorite nodeid="org.knime.base.node.viz.plotter.scatter.ScatterPlotterNodeFactory"/>
+<favorite nodeid="org.knime.base.node.viz.plotter.line.LinePlotterNodeFactory"/>
+</lastused>
+</favoritenodes>

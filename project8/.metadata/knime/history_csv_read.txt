@@ -1,0 +1,3 @@
+/Users/jrramey11/Desktop/mushroom/mushroom_edible.csv
+/Users/jrramey11/Desktop/mushroom/mushroom_posion.csv
+/Users/jrramey11/Desktop/mushroom/mushroom.csv
