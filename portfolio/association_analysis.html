@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Data and Data Quality</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Data Mining Portfolio</h1>
+  <h2>Association Analysis</h2>
+    <div class="introduction">Association Analysis is often applied to market based data in which generated rules will predict the occurrence of an item based on the occurrences of other items in the transaction. A transaction instance can be viewed as a itemset which contains the items purchased. Out of these itemsets, frequent itemsets can be generated whose support is above a set threshold. These itemsets plat a key role when it comes to association analysis. 
+        Once the frequent itemsets have been generated, association rules can be drafted in the form of x->y. These association rules must be monitored by support and confidence (how often Y appears in X) to have an accurate rule set. One can generate all possible itemsets and prune with the calculation of support and confidence for each itemset. This method, however, is extremely computationally intensive. 
+        The best approach to this method is the Apriori Principle, where if an item set is frequent then all its subset are frequent. To implement this we would first generate itemsets of length 1 and generate k+1 candidate itemsets from k frequent item sets. After this, one can prune the itemsets of K + 1 that are infrequent of K and then count the support of these candidates to eliminate the infrequent candidates. This process is repeated until no possible itemsets can be generated. Aprioris can become vulnerable as thresholds for support must be set to a optimal value that does not overpopulate the rule list. Also, if the transaction number increases or if the dimensionality increases the amount of memory being used in this method can slow down the process.        
+    
+
+    
+ 

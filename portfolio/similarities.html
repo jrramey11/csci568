@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Semilarity Metrics</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Data Mining Portfolio</h1>
+    <h2>Similarity Metrics</h2>
+    Similarity metrics in data mining can be considered to be the backbone functions of data mining algorithms. These metrics allow for calculations to assign a similarity values among the data set. To fully grasp the ideal of calculating a similarity value take the instance of the iris data set. In the Iris data set, each flower would have a similarity value against each other flower showing which group of flowers that the one instance of flower belongs to. Similarity metrics are very useful in predicting the classification of an instance as well as helping to predict the future classification of other instances. Similarity metrics are thus a very useful arsenal for data mining algorithms. </p>
+  <h3>Euclidean Distance</h3>
+    <div class="Overview"> 
+        <img src="euclidean.gif" width="400" height="100" border="0" alt="euclidean" /></p>
+        The Euclidean Distance similarity metric is a very popular among data mining algorithms as it is easy to implement and simple in calculating. Euclidean Distance is limited however by data that is in numerical format. Also, the numerical data may need to be normalized in  order to produce results that are useful. Instances of which one may need to normalize the data are those of which the numerical data may be in different ranges say a user rating between 1 and 100 against another user rating between 1 and 10. The formula above is simply the sum of the square root of the difference between two vectors/data points. The formula can be expanded to include all the numerical attributes in calculation. </p>
+        
+  <pre class="code">
+      #Euclidean Distance 
+      def euclidean(xy1,xy2)
+      #Determing the largets value in each array in order to normalize the result
+      largestx=xy1[0]
+      largesty=xy2[0]
+      for i in 1...xy1.length()
+      if largestx < xy1[i]
+          largestx = xy1[i]
+          end
+          if largesty < xy2[i]
+          largesty = xy2[i]
+          end
+          end
+          #Setting the largest value of the two arrays to a floating point number for division 
+          xnorm= largestx.to_f
+          ynorm= largesty.to_f
+          distance=0
+          # Calculating the distance of the two arrays by calculating the distance between each array values
+          #and adding that to a total distance value. Summation on page 69 of Data Mining. 
+          for i in 0...xy1.length()
+          xk=xy1[i]/xnorm
+          yk=xy2[i]/ynorm
+          distance=distance + ((xk-yk)**2)
+          end
+          #d= Math.sqrt(((xy2[0] - xy1[0]) ** 2) + ((xy2[1] - xy1[1]) ** 2))
+          return distance
+          end
+  </pre>
+</div>
+</body>
+</html>
+
+<h3>Simple Matching Coefficient</h3>
+<div class="Overview"> 
+    <img src="simpleMatching.gif" width="600" height="100" border="0" alt="smc" /></p>
+    The Simple Matching Coefficient is a similarity metric optimized for binary based data. The SMC can be calculate as f11 + f00, which is all the instances that match as in 1 1 and 0 0, divided by all the instaces. This gives you a ratio of how similar the objects are based on what is present and missing in both instances. SMC is extremely easy to calculate but once again is limited to the binary data.</p>
+    
+    <pre class="code">
+        #Simple Matching Coefficient 
+        def smc(x,y)
+        #$etting out values of F00, F11, F01, and F10 in order to be used for calculation 
+        foo=0
+        fll=0
+        flo=0
+        fol=0
+        #Calculating the values of F in order to be used for SMC calculation. If x=y and x and y = 0 then F)) will be
+        #incremented by 1. If x=y and x and y = 1 then F11, if x < y F01 will be incremented. 
+            for i in 0...x.length
+			if x[i]==y[i]
+            if x[i]==0
+            foo=foo+1
+            end
+            if x[i]==1
+            fll=fll+1
+            end
+			end
+			if x[i]>y[i]
+            flo=flo+1
+			end
+			if x[i]<y[i]
+                fol=fol+1
+                end
+                end
+                #Calculating the SMC by the equation givin on page 73 of Data Mining 
+                s=((foo+fll).to_f)/((fll+foo+fol+flo).to_f)
+                return s	
+                end
+
+            </pre>
+</div>
+</body>
+</html>
+
+<h3>Jaccard Coefficient</h3>
+<div class="Overview"> 
+    <img src="jaccard.gif" width="600" height="100" border="0" alt="jaccard" /></p>
+    The Jaccard Coefficient is very similar to that of SMC, with one main difference in that it does not include instances of which neither data set contains an attribute. This type of coefficent is often used for transaction data since it is more important to look at what the individuals bought rather than what they did not purchase. The formula can be calculated as f11 divided by the sum of f10, f01 (these are the instances of which one data instance has the attribute while the other does not), and f11. However, just like SMC this coefficent is limited to binary based data.</p>
+    
+    <pre class="code">
+        #Jaccard 
+        def jaccard(x,y)
+        #Implemented in the same manner as SMC, however values that are  0 0 are ignored, so the eqution does not use 
+        # the F00 values. 
+        fll=0
+        flo=0
+        fol=0
+        for i in 0...x.length
+        if x[i]==y[i]
+        if x[i]==1
+        fll=fll+1
+        end
+        end
+        if x[i]>y[i]
+        flo=flo+1
+        end
+        if x[i]<y[i]
+            fol=fol+1
+			end
+            end
+            #Calculating the Jaccard value by the equation on page 74 of Data Mining
+            s=(fll.to_f)/((fll+fol+flo).to_f)
+            return s	
+            end
+                
+                </pre>
+</div>
+</body>
+</html>
+
+<h3>Cosine Similarity</h3>
+<div class="Overview"> 
+    <img src="dot.png" width="200" height="50" border="0" alt="dot" /></p>
+    <img src="similarity.png" width="600" height="100" border="0" alt="cosine" /></p>
+    The Cosine Similarity metric begins to touch the more general similarity metrics for all types of data. This generalization does come at a cost though as the implementation becomes more difficult to program and calculate. The cosine similarity metric is mostly used for in the comparison of text documents for it is more important to know how often each word is shared between the documents than just if the documents contain the same word. The formula for cosine is the dot product of A and B (provide by the first equation) divided by the magnitude.</p>
+    
+    <pre class="code">
+        def cos(x,y)
+        #Declaring intial values for x dot y, ||x|| (lengthx), and ||y|| (lengthy)
+        xdoty=0
+        lengthx=0
+        lengthy=0
+        # This is calculating the lengths and x dot y to be used in the cosine equation. 
+        for i in 0...x.length
+		xdoty=xdoty + (x[i] * y[i])
+		lengthx= lengthx + (x[i] * x[i])
+		lengthy= lengthy + (y[i] * y[i])
+        end
+        #Finishing the calcualtion of the lengths by squaring the values
+        lengthx= Math.sqrt(lengthx)
+        lengthy= Math.sqrt(lengthy)
+        #Calculating the cosine value by using the equation on page 75 of Data Mining. 
+        cosxy= (xdoty.to_f)/(lengthx * lengthy)
+        return cosxy
+        end
+            
+            </pre>
+</div>
+</body>
+</html>
+
+<h3>Pearson Correlation Coefficient</h3>
+<div class="Overview"> 
+    <img src="pearson.gif" width="600" height="100" border="0" alt="text describing the image" /></p>
+    The Pearson Correlation Coefficient is the linear measure between attributes of two data instances. Unlike the previous metrics that did not handle non-normalized data, this metric can still produce desirable results. However, the negative aspect of this method is the fact that it does take more computation more than the other metrics. The formula can executed as the covarience of x and y divided by the product of the standard deviation of x and y.</p>
+    
+    <pre class="code">
+        #Pearson Correlation Coefficient 
+        def pearson(x,y)
+        #Setting up the values used to calculated the mean values of x and y, standard dev., and covarience. 
+        xmean=0
+        ymean=0
+        covarience=0
+        stdx=0
+        stdy=0
+        #Calculating the mean value of x and y
+        for i in 0...x.length
+		xmean=xmean+x[i]
+		ymean=ymean+y[i]
+        end
+        xmean=(xmean.to_f)/(x.length.to_f)
+        ymean=(ymean.to_f)/(y.length.to_f)
+        #Calculating covarience and standard dev
+        for i in 0...x.length
+		covarience=covarience + ((x[i]-xmean)*(y[i]-ymean))
+		stdx= stdx + ((x[i]-xmean)**2)
+		stdy= stdy + ((y[i]-ymean)**2)
+        end
+        #Finishing the calculationg of Pearsons by the equation on page 77 of Data Mining 
+        covarience= (covarience.to_f)/((x.length-1).to_f)
+        stdx= (stdx.to_f)/((x.length-1).to_f)
+        stdy= (stdy.to_f)/((y.length-1).to_f)
+        corr= covarience/(stdx * stdy)
+        return corr
+        end        
+    </pre>
+</div>
+</body>
+</html>
+
+<h3>Tanimoto Coefficient</h3>
+<div class="Overview"> 
+    <img src="tanimoto.gif" width="600" height="100" border="0" alt="tanimoto coefficent" /></p>
+    The Tanimoto Coefficient is very similar to that of the Cosine Coefficient with the concept that the common attributes is divided by the number of attributes set in either sample. The equation is very similar to that of the Cosine Coefficient as well except for the division of the addition of the squares of magnitude subtracted by the dot product.</p>
+    
+    <pre class="code">
+        #Tanimoto Coefficient 
+        def tanimoto(x,y)
+        #Executed similary to Cosine 
+        #Setting up the values for ||x||, ||y||, and x dot y
+        xdoty=0
+        lengthx=0
+        lengthy=0
+        #Calculating the x dot y, ||x||, and ||y||
+        for i in 0...x.length
+		xdoty=xdoty + (x[i] * y[i])
+		lengthx= lengthx + (x[i] * x[i])
+		lengthy= lengthy + (y[i] * y[i])
+        end
+        lengthx= Math.sqrt(lengthx)
+        lengthy= Math.sqrt(lengthy)
+        # Claculating the tanimoto value by the equation on page 76 of Data Mining
+        tan= (xdoty.to_f)/(((lengthx **2)+(lengthy **2) -xdoty).to_f)
+        return tan
+        end
+    </pre>
+</div>
+</body>
+</html>
+
+
