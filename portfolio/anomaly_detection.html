@@ -20,15 +20,22 @@
   <h2>Anomaly Detection</h2>
     <div class="introduction">Anomalies are data points that are considerably different that the rest of the data. Anomalies are mostly disregard in the data mining process as they are the result of human error or some other type of error and these anomalies could detriment the outcome of the data mining. However, anomalies are sometimes what the data scientist is looking for. Anomalies are critical in data when it deals with credit card fraud, telecommunication fraud, or network intrusion. Detecting these anomalies can be just as a daunting task as classification.</p>
     <h2>Statistical Approach</h2>
-        A statistical approach to find anomalies is surprisingly a good method. The statistical test depends on data distribution, parameters of the distribution, and number of expected outliers. Grubb's Test can detect outliers by assuming the data comes from normal distribution. The test detects one outlier at a time and removes the outlier by using the formula:
+        A statistical approach to find anomalies is surprisingly a good method. The statistical test depends on data distribution, parameters of the distribution, and number of expected outliers. Grubb's Test can detect outliers by assuming the data comes from normal distribution. The test detects one outlier at a time and removes the outlier by using the formula:</p>
+        H0: There is no outlier in the data.</p>
+        Ha: There is at least one outlier.
+          <img src="g.png" width="301" height="201" border="0" alt="g" />
+          <img src="reject.png" width="301" height="201" border="0" alt="g ratio" />	</p>
         Also one can use the Likelihood approach in which a set D contains samples from a mixture of two probability distributions M (majority) and A(anomalies). Initially, assume all data belongs to set M and let Lt(D) be the log of the likelihood of D at time t. From here each point will move to set A where the change in likelihood is calculated and if the change is greater than the predefined threshold leave the point in A. 
         A statistical approach is however limited by the fact most tests are for a single attribute, the data distribution may not be known, and it is very difficult to implement with high dimensional data sets. </p> 
 	<h2>Proximity</h2>
 	In the proximity method, data is represented as a vector of features. With the nearest neighbor approach, the distance between every pair of data points is calculated and outliers can then be determined by either the data points with the lowest number of neighbors, the points farthest from the next neighbor, or even the points with the highest average distance from their neighbors. However, when applying this to high dimensional data the anomalies may not be anomalies at all because high dimensional data gives the opportunity for the data to sparse. </p>
+         <img src="density.png" width="301" height="201" border="0" alt="nearest neighbor" />	</p>
     <h2>Density</h2>
     With the density approach, one would calculate the density of a point's local neighborhood. Then compute the local outlier factor of a sample data point from that neighborhood, the average of the ratios of density of the sample point and the density of its nearest neighbor would result in outliers of the largest local outlier factor value.</p>
+         <img src="dd.png" width="301" height="201" border="0" alt="Density Approach" />	</p>
         <h2>Clusters</h2>
        In the cluster approach, one would cluster the data into different groups of different densities. Form here, one would choose one of the points in the small clusters as a possible outlier and calculate the distance between the possible outlier and the rest of the non-outliers. If the outlier is far from the others then it can be classified as an outlier. </p>
+         <img src="clusters.png" width="301" height="201" border="0" alt="Clusters" />	</p>
     
     
 
